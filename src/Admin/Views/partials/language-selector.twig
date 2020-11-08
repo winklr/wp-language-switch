@@ -1,0 +1,6 @@
+<select name="wplangswitch_options[language][]">
+    <option value="" {{ not selected ? 'selected' }}>{{ __('Select Language', 'wp-language-switch') }}</option>
+    {% for key, language in languages %}
+        <option value="{{ key }}" {{ key == selected ? 'selected' }}>{{ language.name }}</option>
+    {% endfor %}
+</select>

@@ -1,0 +1,43 @@
+<div class="wrap wp-language-switch">
+    {% if message %}
+        <div id="message" class="updated"><p>{{ message }}</p></div>
+    {% endif %}
+
+    <h1>{{ title }}</h1>
+    <form id="wp_language_switch_form" action="options-general.php?page=wp_language_switch_admin_page&savedata=true" method="post">
+        {{ function('wp_nonce_field', 'save_languages', '_wpls_nonce') }}
+        <table class="widefat">
+            <thead>
+            <tr>
+                <th colspan="2">{{ __('Language', 'wp-language-switch') }}</th>
+                <th colspan="2">{{ __('Target', 'wp-language-switch') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, value in options %}
+                <tr>
+                    <td style="width:35%;">
+                        {{ include('partials/language-selector.twig', { selected: key }) }}
+                    </td>
+                    <td style="width:2%;">&raquo;</td>
+                    <td style="width:60%;">
+                        <input type="text" name="wplangswitch_options[target][]" value="{{ value }}" style="width:99%;" />
+                    </td>
+                    <td><span class="wpls-delete">Delete</span></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td style="width:35%;">
+                    {{ include('partials/language-selector.twig') }}
+                </td>
+                <td style="width:2%;">&raquo;</td>
+                <td style="width:60%;">
+                    <input type="text" name="wplangswitch_options[target][]" value="" style="width:99%;" />
+                </td>
+                <td><span class="wps301-delete">Delete</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="submit"><input type="submit" name="submit_wpls" class="button-primary" value="{{ __('Save Changes') }}" /></p>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+{
+    "name": "mwinkler/wp-language-switch",
+    "description": "Wordpress plugin providing language switch to load localized wordpress instances",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Winkler",
+            "email": "martin@werk85.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WPLangSwitch\\": "src/"
+        }
+    },
+    "require": {
+        "composer/installers": "^1.9",
+        "timber/timber": "^1.18"
+    }
+}
