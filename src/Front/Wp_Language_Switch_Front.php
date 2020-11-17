@@ -3,7 +3,6 @@
 namespace WPLangSwitch\Front;
 
 use WPLangSwitch\Wp_Language_Switch_Base;
-use WPLangSwitch\Wp_Language_Switch_LanguageProvider;
 
 /**
  * The public-facing functionality of the plugin.
@@ -65,13 +64,17 @@ class Wp_Language_Switch_Front extends Wp_Language_Switch_Base {
 		$offset = 0;
 
 		foreach ( $items as $item ) {
-			if ( $languages = get_post_meta( $item->ID, '_wpls_menu_item', true ) ) {
+			if ( $meta = get_post_meta( $item->ID, '_wpls_menu_item', true ) ) {
 				$i = 0;
+
+				$languages = array_filter($meta, function ($key) {
+					return preg_match( '/language_\d+$/', $key);
+				}, ARRAY_FILTER_USE_KEY);
 
 				foreach ($languages as $key => $langIso) {
 					$lang_item = clone $item;
 					$lang_item->ID = $this->get_item_id( $key ); // A unique ID
-					$lang_item->title = $this->get_item_title( $langIso );
+					$lang_item->title = !empty($meta["{$key}_label"]) ? $meta["{$key}_label"] : $this->get_item_title( $langIso );
 					$lang_item->attr_title = '';
 					$lang_item->url = $this->get_language_url( $langIso);
 					$lang_item->classes = $this->get_item_classes( $item , $langIso);

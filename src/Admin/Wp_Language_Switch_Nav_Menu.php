@@ -8,6 +8,7 @@ class Wp_Language_Switch_Nav_Menu {
 	    add_action( 'wp_update_nav_menu_item', array( $this, 'wp_update_nav_menu_item' ), 10, 2 );
     }
 
+    // Render content of menu meta box on menu edit screen
 	public function nav_menu_link() {?>
 		<div id="posttype-wpls" class="posttypediv">
 			<div id="tabs-panel-wpls" class="tabs-panel tabs-panel-active">
@@ -55,7 +56,9 @@ class Wp_Language_Switch_Nav_Menu {
 			// default values
 			$options = array(
 				'menu-item-' . $menu_item_db_id . '-language_0' => '',
-				'menu-item-' . $menu_item_db_id . '-language_1' => ''
+				'menu-item-' . $menu_item_db_id . '-language_0_label' => '',
+				'menu-item-' . $menu_item_db_id . '-language_1' => '',
+				'menu-item-' . $menu_item_db_id . '-language_1_label' => ''
 			);
 			// Our jQuery form has not been displayed
 			if ( empty( $_POST['menu-item-wpls-detect'][ $menu_item_db_id ] ) ) {

@@ -48,12 +48,22 @@ jQuery(document).ready(
                                     wpls_data.val[item] && wpls_data.val[item][`menu-item-${item}-language_1`] || ''
                                 ]
 
+                                const languageLabels = [
+                                    wpls_data.val[item] && wpls_data.val[item][`menu-item-${item}-language_0_label`] || '',
+                                    wpls_data.val[item] && wpls_data.val[item][`menu-item-${item}-language_1_label`] || ''
+                                ]
+
                                 // keys of configured languages ('de', 'en', 'fr', ...)
                                 const langKeys = Object.keys(wpls_data.languages)
 
                                 // generate language select controls
                                 const languageSelectControls = languagePair.map((language, index) => {
+                                    const group = $('<div>').addClass('w-100');
                                     const selectControl = $('<select>').attr('name', `menu-item-${item}-language_${index}`)
+                                    const labelControl = $('<input>')
+                                        .attr('name', `menu-item-${item}-language_${index}_label`)
+                                        .attr('placeholder', wpls_data.strings['label_input_placeholder'])
+                                        .val(languageLabels[index])
 
                                     // generate options
                                     const options = [
@@ -64,7 +74,9 @@ jQuery(document).ready(
                                             .prop('selected', language === key)
                                             .attr('value', key).text(wpls_data.languages[key]))
                                     ]
-                                    return selectControl.append(options)
+                                    return group
+                                        .append(selectControl.append(options))
+                                        .append(labelControl)
                                 })
 
                                 $(this).prepend(languageSelectControls)

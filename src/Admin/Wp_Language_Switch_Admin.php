@@ -63,7 +63,8 @@ class Wp_Language_Switch_Admin extends Wp_Language_Switch_Base {
 
 		$data = array(
 			'strings' => array(
-				'select_default' => __('Select Language', 'wp-language-switch')
+				'select_default' => __('Select Language', 'wp-language-switch'),
+				'label_input_placeholder' => __('Specify (optional) label', 'wp-language-switch')
 			), // The strings for the options
 			'title'   => __( 'Languages', 'wp-language-switch' ), // The title
 			'val'     => array(),
@@ -139,6 +140,7 @@ class Wp_Language_Switch_Admin extends Wp_Language_Switch_Base {
         }
 	}
 
+	// adds a metabox to the menu edit screen (left side, accordion menu)
 	public function add_nav_menu(  ) {
 		$custom_nav = new Wp_Language_Switch_Nav_Menu();
 		add_meta_box(

@@ -13,26 +13,26 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/Admin/Wp_Language_Switch_Admin.php:119
+#: ../src/Admin/Wp_Language_Switch_Admin.php:66
+msgid "Select Language"
+msgstr ""
+
+#: ../src/Admin/Wp_Language_Switch_Admin.php:67
+msgid "Specify (optional) label"
+msgstr ""
+
+#: ../src/Admin/Wp_Language_Switch_Admin.php:69, ../src/Admin/Wp_Language_Switch_Nav_Menu.php:18, ../src/Admin/Wp_Language_Switch_Nav_Menu.php:21
 msgid "Languages"
 msgstr ""
 
-#: ../src/Admin/Wp_Language_Switch_Admin.php:128
-msgid "Language"
-msgstr ""
-
-#: ../src/Admin/Wp_Language_Switch_Admin.php:143
+#: ../src/Admin/Wp_Language_Switch_Admin.php:97
 msgid "WP Language Switch"
 msgstr ""
 
-#: ../src/Admin/Wp_Language_Switch_Admin.php:144
+#: ../src/Admin/Wp_Language_Switch_Admin.php:98
 msgid "WP Language Switch Options"
 msgstr ""
 
-#: ../src/Admin/Wp_Language_Switch_Admin.php:152
-msgid "WP Language Switch Description"
-msgstr ""
-
-#: ../src/Admin/Wp_Language_Switch_Admin.php:171
-msgid "Settings Saved"
+#: ../src/Admin/Wp_Language_Switch_Admin.php:115
+msgid "Settings saved"
 msgstr ""
