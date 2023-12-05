@@ -98,8 +98,8 @@ class Wp_Language_Switch_Admin extends Wp_Language_Switch_Base {
 			__( 'WP Language Switch Options', 'wp-language-switch' ),
 			'manage_options',
 			'wp_language_switch_admin_page',
-			array($this, 'render_menu_page'),
-			'dashicons-translation');
+			array($this, 'render_menu_page')
+		);
 	}
 
 	public function render_menu_page() {
