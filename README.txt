@@ -66,13 +66,14 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+= 1.1.0 =
+* Added support for timber 2.x
+
+= 1.0.1 =
+* Fixed deprecation warning if php 8.1 was used
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+* Initial release
 
 == Upgrade Notice ==
 

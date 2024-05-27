@@ -28,8 +28,19 @@ class Wp_Language_Switch_Admin extends Wp_Language_Switch_Base {
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		parent::__construct($plugin_name, $version);
-		Timber::$locations = __DIR__ . '/Views';
+		parent::__construct( $plugin_name, $version );
+		if ( version_compare( Timber::$version, '2.0.0', '>=' ) ) {
+			// Timber 2.x is installed.
+			add_filter('timber/locations', function ($paths) {
+				$paths['wpls'] = [
+					__DIR__ . '/Views'
+				];
+
+				return $paths;
+			});
+		} else {
+			Timber::$locations = __DIR__ . '/Views';
+		}
 	}
 
 	/**
@@ -114,7 +125,9 @@ class Wp_Language_Switch_Admin extends Wp_Language_Switch_Base {
 		$data['options'] = get_option( 'wplangswitch_options' );
 		$data['message'] = !empty( $_POST['wplangswitch_options']) ? __('Settings saved', 'wp-language-switch') : '';
 
-		Timber::render( 'admin.twig', $data );
+		version_compare(Timber::$version, '2.0.0', '>=')
+			? Timber::render( '@wpls/admin.twig', $data )
+			: Timber::render( 'admin.twig', $data );
 	}
 
 	public function save_languages($data) {
