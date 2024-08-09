@@ -22,7 +22,7 @@ require BASE_PATH . 'vendor/autoload.php';
  * Plugin Name:       Wordpress Language Switch
  * Plugin URI:        https://github.com/winklr/wp-language-switch.git
  * Description:       Provides settings and language switcher menu to switch between two localized wordpress instances
- * Version:           1.0.1
+ * Version:           1.1.1
  * Author:            Martin Winkler
  * Author URI:        https://github.com/winklr
  * License:           GPL-2.0+
@@ -45,7 +45,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WP_LANGUAGE_SWITCH_VERSION', '1.0.1' );
+define( 'WP_LANGUAGE_SWITCH_VERSION', '1.1.1' );
 
 /**
  * The code that runs during plugin activation.

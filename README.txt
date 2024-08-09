@@ -66,6 +66,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+= 1.1.1 =
+* Fixed incorrect loading of twig template in admin panel
+
 = 1.1.0 =
 * Added support for timber 2.x
 

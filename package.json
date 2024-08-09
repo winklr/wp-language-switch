@@ -1,6 +1,6 @@
 {
   "name": "wp-language-switch",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Wordpress plugin providing a language switch to forward users to localized wordpress instances",
   "repository": "https://github.com/winklr/wp-language-switch",
   "author": "Martin Winkler",

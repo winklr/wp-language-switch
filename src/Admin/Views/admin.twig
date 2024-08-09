@@ -17,7 +17,7 @@
             {% for key, value in options %}
                 <tr>
                     <td style="width:35%;">
-                        {{ include('partials/language-selector.twig', { selected: key }) }}
+                        {{ include('@wpls/partials/language-selector.twig', { selected: key }) }}
                     </td>
                     <td style="width:2%;">&raquo;</td>
                     <td style="width:60%;">
@@ -28,7 +28,7 @@
             {% endfor %}
             <tr>
                 <td style="width:35%;">
-                    {{ include('partials/language-selector.twig') }}
+                    {{ include('@wpls/partials/language-selector.twig') }}
                 </td>
                 <td style="width:2%;">&raquo;</td>
                 <td style="width:60%;">
