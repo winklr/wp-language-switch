@@ -15,8 +15,10 @@
         }
     },
     "require": {
-        "composer/installers": "^1.9",
-        "timber/timber": "1.24.*|2.*"
+        "composer/installers": "^1.9"
+    },
+    "suggest": {
+        "timber/timber": "Required for template rendering (^1.24 || ^2.0)"
     },
     "config": {
         "allow-plugins": {

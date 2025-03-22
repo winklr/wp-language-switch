@@ -66,6 +66,12 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.1.2 =
+* Added compatibility with both Timber 1.x and 2.x versions
+* Timber is now a recommended plugin rather than a dependency
+* Fixed issues with menu handling in different Timber versions
+
 = 1.1.1 =
 * Fixed incorrect loading of twig template in admin panel
 

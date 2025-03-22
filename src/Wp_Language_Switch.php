@@ -3,6 +3,7 @@
 namespace WPLangSwitch;
 
 use WPLangSwitch\Admin\Wp_Language_Switch_Admin;
+use WPLangSwitch\Compatibility\TimberCompat;
 use WPLangSwitch\Front\Wp_Language_Switch_Front;
 
 /**
@@ -72,7 +73,7 @@ class Wp_Language_Switch {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'WP_LANGUAGE_SWITCH_VERSION' ) ) {
+		if (defined('WP_LANGUAGE_SWITCH_VERSION')) {
 			$this->version = WP_LANGUAGE_SWITCH_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -80,6 +81,9 @@ class Wp_Language_Switch {
 		$this->plugin_name = 'wp-language-switch';
 
 		$this->loader = new Wp_Language_Switch_Loader();
+
+		// Apply fix for timber compatibility
+		TimberCompat::apply_compatibility_fixes();
 
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -99,7 +103,7 @@ class Wp_Language_Switch {
 
 		$plugin_i18n = new Wp_Language_Switch_i18n();
 
-		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action('init', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -111,14 +115,14 @@ class Wp_Language_Switch {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wp_Language_Switch_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Wp_Language_Switch_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_nav_scripts' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'save_languages');
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'add_nav_menu');
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_page');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_nav_scripts');
+		$this->loader->add_action('admin_init', $plugin_admin, 'save_languages');
+		$this->loader->add_action('admin_init', $plugin_admin, 'add_nav_menu');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_menu_page');
 	}
 
 	/**
@@ -130,16 +134,16 @@ class Wp_Language_Switch {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Language_Switch_Front( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Wp_Language_Switch_Front($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
 		// make sure to run only on frontend
-		if ( ! is_admin() ) {
+		if (! is_admin()) {
 			// Because WP_Customize_Nav_Menu_Item_Setting::filter_wp_get_nav_menu_items() runs at 10.
 			//add_filter( 'wp_get_nav_menu_items', array( $this, 'exclude_menu_items' ), 20 );
-			$this->loader->add_filter( 'wp_get_nav_menu_items', $plugin_public, 'get_nav_menu_items');
+			$this->loader->add_filter('wp_get_nav_menu_items', $plugin_public, 'get_nav_menu_items');
 			$this->loader->add_filter('wp_setup_nav_menu_item', $plugin_public, 'filter_nav_menu_items');
 		}
 	}
@@ -183,5 +187,4 @@ class Wp_Language_Switch {
 	public function get_version() {
 		return $this->version;
 	}
-
 }
